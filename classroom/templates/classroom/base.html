@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Страница компании</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+</head>
+<body>
+<!-- Шапка -->
+<header class="header">
+    <img class="header__logo" src="img/header/mai.gif"/>
+    <div class="header-search">
+        <input type="text" class="form-control input-sm header-search__input" maxlength="64" placeholder="Я ищу..."/>
+        <button type="submit" class="btn btn-primary btn-sm header-search__button">Найти</button>
+    </div>
+    <div class="header__stretch">
+        <div class="header__stretch__messages">
+            <span>2</span>
+        </div>
+        <img class="header__stretch__logo" src="img/companies/sukhoi-rus.jpg"/>
+    </div>
+</header>
+<!-- Конец шапки -->
+
+{% block content %}
+
+{% endblock content %}
+
+<!-- Футер -->
+<footer class="footer container">
+    <img class="footer__logo" src="../../static/img/header/mai.gif"/>
+    <ul class="footer-social">
+        <li class="footer-social__item"><a><i class="fab fa-vk"></i></a></li>
+        <li class="footer-social__item"><a><i class="fab fa-facebook-square"></i></a></li>
+        <li class="footer-social__item"><a><i class="fab fa-youtube"></i></a></li>
+        <li class="footer-social__item"><a><i class="fab fa-twitter"></i></a></li>
+        <li class="footer-social__item"><a><i class="fab fa-instagram"></i></a></li>
+        <li class="footer-social__item"><a><i class="fab fa-telegram"></i></a></li>
+    </ul>
+    <div class="footer-contacts">
+        <span class="footer-contacts__tel">8-800-555-35-35</span>
+        <span class="footer-contacts__adress">2 этаж, ГУК, Волоколамское ш.,<br/>д.4, Москва, Россия</span>
+    </div>
+</footer>
+<!-- Конец футера -->
+
+<!-- Копирайт -->
+<div class="copyright container">
+    <span>&copy; 2018 Creation All Rights Reserved</span>
+</div>
+<!-- Конец копирайта -->
+
+<link rel="stylesheet" href="css/main.min.css">
+<link rel="stylesheet" href="libs/normalize-css/normalize.css">
+<script src="js/scripts.min.js"></script>
+</body>
+</html>

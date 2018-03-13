@@ -1,0 +1,47 @@
+[
+  {
+    "model": "classroom.Course",
+    "pk": 1,
+    "fields": {
+      "min": 1
+    }
+  },
+  {
+    "model": "classroom.Course",
+    "pk": 2,
+    "fields": {
+      "min": 2
+    }
+  },
+  {
+    "model": "classroom.Course",
+    "pk": 3,
+    "fields": {
+      "min": 3
+    }
+  },
+  {
+    "model": "classroom.faculty",
+    "pk": 1,
+    "fields": {
+      "number": 3,
+      "title": "Системы управления, информатика и электроэнергетика"
+    }
+  },
+  {
+    "model": "classroom.department",
+    "pk": 1,
+    "fields": {
+      "number": 304,
+      "title": "Вычислительные машины, системы и сети"
+    }
+  },
+  {
+    "model": "classroom.speciality",
+    "pk": 1,
+    "fields": {
+      "title": "Системы управления ЛА"
+    }
+  }
+
+]
