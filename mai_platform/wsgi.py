@@ -1,5 +1,5 @@
 """
-WSGI config for django_school project.
+WSGI config for mai_platform project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
