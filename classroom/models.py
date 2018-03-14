@@ -120,6 +120,7 @@ class Student(models.Model):
     faculty = models.ForeignKey(Faculty, related_name='student_faculty', on_delete=models.CASCADE, null=True)
     department = models.ForeignKey(Department, related_name='student_department', on_delete=models.CASCADE, null=True)
     speciality = models.ForeignKey(Speciality, related_name='student_speciality', on_delete=models.CASCADE, null=True)
+    description = models.TextField(max_length=300, null=True)
 
     # def get_unanswered_questions(self, quiz):
     #     answered_questions = self.quiz_answers \

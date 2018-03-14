@@ -72,11 +72,11 @@ class VacancyListView(ListView):
 @method_decorator([login_required, student_required], name='dispatch')
 class TakenQuizListView(ListView):
     model = StudentVacancy
-    context_object_name = 'taken_vacancies'
+    context_object_name = 'responded_vacancies'
     template_name = 'classroom/students/taken_quiz_list.html'
 
     def get_queryset(self):
-        queryset = self.request.user.student.taken_vacancies \
+        queryset = self.request.user.student.responded_vacancies \
             .select_related('vacancy', 'vacancy__course') \
             .order_by('vacancy__name')
         return queryset

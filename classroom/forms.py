@@ -23,14 +23,14 @@ class CompanySignUpForm(UserCreationForm):
 
 
 class StudentSignUpForm(UserCreationForm):
-    course = forms.ModelChoiceField(queryset=Course.objects.all(), required=True)
-    faculty = forms.ModelChoiceField(queryset=Faculty.objects.all(), required=True)
-    department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True)
-    speciality = forms.ModelChoiceField(queryset=Speciality.objects.all(), required=True)
+    # course = forms.ModelChoiceField(queryset=Course.objects.all(), required=True)
+    # faculty = forms.ModelChoiceField(queryset=Faculty.objects.all(), required=True)
+    # department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True)
+    # speciality = forms.ModelChoiceField(queryset=Speciality.objects.all(), required=True)
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ("username", "email", "password1", "password2", "course", "faculty", "department", "speciality")
+        fields = ("username", "email", "password1", "password2")
 
     @transaction.atomic
     def save(self):
@@ -38,20 +38,37 @@ class StudentSignUpForm(UserCreationForm):
         user.is_student = True
         user.save()
         student = Student.objects.create(user=user)
-        student.course.add(*self.cleaned_data.get('course'))
-        student.faculty.add(*self.cleaned_data.get('faculty'))
-        student.department.add(*self.cleaned_data.get('department'))
-        student.speciality.add(*self.cleaned_data.get('speciality'))
+        # student.course.add(*self.cleaned_data.get('course'))
+        # student.faculty.add(*self.cleaned_data.get('faculty'))
+        # student.department.add(*self.cleaned_data.get('department'))
+        # student.speciality.add(*self.cleaned_data.get('speciality'))
         return user
 
 
 class StudentCourseForm(forms.ModelForm):
+    course = forms.ModelChoiceField(queryset=Course.objects.all(), required=True)
+    faculty = forms.ModelChoiceField(queryset=Faculty.objects.all(), required=True)
+    department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True)
+    speciality = forms.ModelChoiceField(queryset=Speciality.objects.all(), required=True)
+    description = forms.TextInput()
+
     class Meta:
         model = Student
-        fields = ('course', )
-        widgets = {
-            'course': forms.CheckboxSelectMultiple
-        }
+        fields = ('course', 'faculty', 'department', 'speciality', 'description')
+        # widgets = {
+        #     'course': forms.ModelChoiceField(queryset=Course.objects.all(), initial=None)
+        # }
+
+    # @transaction.atomic
+    # def save(self):
+    #     student = super().save(commit=False)
+    #     student.is_student = True
+    #     student.save()
+    #     student.course.add(*self.cleaned_data.get('course'))
+    #     student.faculty.add(*self.cleaned_data.get('faculty'))
+    #     student.department.add(*self.cleaned_data.get('department'))
+    #     student.speciality.add(*self.cleaned_data.get('speciality'))
+    #     return student
 
 
 class VacancyForm(forms.ModelForm):
