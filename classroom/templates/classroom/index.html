@@ -1,5 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block banner %}
+<!-- Баннер -->
+<banner class="jumbotron jumbotron-fluid banner">
+    <div class=" banner-promo">
+        <div class="banner_box">
+            <div class="container ">
+                <div class="row banner_content">
+                    <div class="  banner-promo-main">
+                        <div class="col-md-12 banner-promo-main__header">Выполняйте практику,</br>которая вам нравится
+                        </div>
+                        <div>
+                            <button class=" btn    banner-promo-main__button" href="{% url 'student_signup' %}">Разместить резюме</button>
+                            <button class=" btn    banner-promo-main__button" href="{% url 'company_signup' %}">Опубликовать вакансию</button>
+                        </div>
+                    </div>
+                    <div class="    banner-info">
+                        <div class="banner-info__item">
+                            <div class="banner-info__item__header">4354</div>
+                            <div class="banner-info__item__comment">Резюме</div>
+                        </div>
+                        <div class="banner-info__item">
+                            <div class="banner-info__item__header">1200</div>
+                            <div class="banner-info__item__comment">Вакансий</div>
+                        </div>
+                        <div class="banner-info__item">
+                            <div class="banner-info__item__header">120+</div>
+                            <div class="banner-info__item__comment">Практик выполнено</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</banner>
+<!-- Конец баннера -->
+{% endblock banner %}
+
 {% block content %}
 
     <!-- Популярные категории -->
@@ -66,7 +104,7 @@
             <h3 class="vacancies__header">Популярные вакансии</h3>
             <div class="card-vacancy">
                 <div class="col-md-1">
-                    <img class="card-vacancy__logo img-responsive" src="./img/vacancies/mig.gif"/>
+                    <img class="card-vacancy__logo img-responsive" src="{% static 'img/vacancies/mig.gif' %}"/>
                 </div>
                 <div class="col-md-11">
                     <div class="card-vacancy__description">
@@ -89,7 +127,7 @@
             </div>
             <div class="card-vacancy">
                 <div class="col-md-1">
-                    <img class="card-vacancy__logo img-responsive" src="./img/vacancies/mig.gif"/>
+                    <img class="card-vacancy__logo img-responsive" src="{% static 'img/vacancies/mig.gif' %}"/>
                 </div>
                 <div class="col-md-11">
                     <div class="card-vacancy__description">
@@ -112,7 +150,7 @@
             </div>
             <div class="card-vacancy">
                 <div class="col-md-1">
-                    <img class="card-vacancy__logo img-responsive" src="./img/vacancies/mig.gif"/>
+                    <img class="card-vacancy__logo img-responsive" src="{% static 'img/vacancies/mig.gif' %}f"/>
                 </div>
                 <div class="col-md-11">
                     <div class="card-vacancy__description">
@@ -143,7 +181,7 @@
 
             <div class="card-company-item">
                 <div class="card-company-item__logoContainer">
-                    <img class="img-responsive card-company-item__logo" src="./img/companies/sukhoi.jpg"/>
+                    <img class="img-responsive card-company-item__logo" src="{% static 'img/companies/sukhoi.jpg' %}"/>
                 </div>
                 <div class="card-company-item__description">
                     <span class="card-company-item__description__name">Сухой, компания</span>
@@ -153,7 +191,7 @@
             </div>
             <div class="card-company-item">
                 <div class="card-company-item__logoContainer">
-                    <img class="img-responsive card-company-item__logo" src="./img/companies/sukhoi.jpg"/>
+                    <img class="img-responsive card-company-item__logo" src="{% static 'img/companies/sukhoi.jpg' %}"/>
                 </div>
                 <div class="card-company-item__description">
                     <span class="card-company-item__description__name">Сухой, компания</span>
@@ -163,7 +201,7 @@
             </div>
             <div class="card-company-item">
                 <div class="card-company-item__logoContainer">
-                    <img class="img-responsive card-company-item__logo" src="./img/companies/sukhoi.jpg"/>
+                    <img class="img-responsive card-company-item__logo" src="{% static 'img/companies/sukhoi.jpg' %}"/>
                 </div>
                 <div class="card-company-item__description">
                     <span class="card-company-item__description__name">Сухой, компания</span>
