@@ -114,6 +114,12 @@ class Vacancy(models.Model):
 ####### Student related models ########
 #######################################
 
+GENDER_CHOICES = (
+    ('male', "Мужской"),
+    ('female', "Женский"),
+)
+
+
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     course = models.ForeignKey(Course, related_name='student_course', on_delete=models.CASCADE, null=True)
@@ -121,6 +127,9 @@ class Student(models.Model):
     department = models.ForeignKey(Department, related_name='student_department', on_delete=models.CASCADE, null=True)
     speciality = models.ForeignKey(Speciality, related_name='student_speciality', on_delete=models.CASCADE, null=True)
     description = models.TextField(max_length=300, null=True)
+    gender = models.CharField(choices=GENDER_CHOICES, default='male', verbose_name='Пол', max_length=8)
+    dob = models.DateField(null=True)
+    phone = models.CharField(max_length=12, null=True)
 
     # def get_unanswered_questions(self, quiz):
     #     answered_questions = self.quiz_answers \
@@ -142,7 +151,6 @@ class StudentVacancy(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='responded_vacancies')
     vacancy = models.ForeignKey(Vacancy, on_delete=models.CASCADE, related_name='+')
     date = models.DateTimeField(auto_now_add=True)
-
 
 # class TakenVacancy(models.Model):
 #     student = models.ForeignKey(Student, on_delete=models.CASCADE, related_name='taken_vacancies')
