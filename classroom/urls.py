@@ -6,7 +6,8 @@ urlpatterns = [
     path('', classroom.home, name='home'),
 
     path('students/', include(([
-        path('', students.VacancyListView.as_view(), name='quiz_list'),
+        # path('', students.VacancyListView.as_view(), name='quiz_list'),
+        path('', students.StudentProfileView.as_view(), name='student_profile'),
         path('interests/', students.StudentInterestsView.as_view(), name='student_interests'),
         path('taken/', students.TakenQuizListView.as_view(), name='taken_quiz_list'),
         # path('quiz/<int:pk>/', students.take_quiz, name='take_quiz'),

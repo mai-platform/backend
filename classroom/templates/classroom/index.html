@@ -1,41 +1,50 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block title %}
+    <title>Главная</title>
+{% endblock title %}
+
 {% block banner %}
-<!-- Баннер -->
-<banner class="jumbotron jumbotron-fluid banner">
-    <div class=" banner-promo">
-        <div class="banner_box">
-            <div class="container ">
-                <div class="row banner_content">
-                    <div class="  banner-promo-main">
-                        <div class="col-md-12 banner-promo-main__header">Выполняйте практику,</br>которая вам нравится
+    <!-- Баннер -->
+    <banner class="jumbotron jumbotron-fluid banner">
+        <div class=" banner-promo">
+            <div class="banner_box">
+                <div class="container ">
+                    <div class="row banner_content">
+                        <div class="  banner-promo-main">
+                            <div class="col-md-12 banner-promo-main__header">Выполняйте практику,</br>которая вам
+                                нравится
+                            </div>
+                            <div>
+                                <button class=" btn    banner-promo-main__button" href="{% url 'student_signup' %}">
+                                    Разместить резюме
+                                </button>
+                                <button class=" btn    banner-promo-main__button" href="{% url 'company_signup' %}">
+                                    Опубликовать вакансию
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <button class=" btn    banner-promo-main__button" href="{% url 'student_signup' %}">Разместить резюме</button>
-                            <button class=" btn    banner-promo-main__button" href="{% url 'company_signup' %}">Опубликовать вакансию</button>
-                        </div>
-                    </div>
-                    <div class="    banner-info">
-                        <div class="banner-info__item">
-                            <div class="banner-info__item__header">4354</div>
-                            <div class="banner-info__item__comment">Резюме</div>
-                        </div>
-                        <div class="banner-info__item">
-                            <div class="banner-info__item__header">1200</div>
-                            <div class="banner-info__item__comment">Вакансий</div>
-                        </div>
-                        <div class="banner-info__item">
-                            <div class="banner-info__item__header">120+</div>
-                            <div class="banner-info__item__comment">Практик выполнено</div>
+                        <div class="    banner-info">
+                            <div class="banner-info__item">
+                                <div class="banner-info__item__header">4354</div>
+                                <div class="banner-info__item__comment">Резюме</div>
+                            </div>
+                            <div class="banner-info__item">
+                                <div class="banner-info__item__header">1200</div>
+                                <div class="banner-info__item__comment">Вакансий</div>
+                            </div>
+                            <div class="banner-info__item">
+                                <div class="banner-info__item__header">120+</div>
+                                <div class="banner-info__item__comment">Практик выполнено</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</banner>
-<!-- Конец баннера -->
+    </banner>
+    <!-- Конец баннера -->
 {% endblock banner %}
 
 {% block content %}
