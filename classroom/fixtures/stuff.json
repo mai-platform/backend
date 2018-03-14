@@ -42,6 +42,21 @@
     "fields": {
       "title": "Системы управления ЛА"
     }
+  },
+  {
+    "model": "classroom.skill",
+    "pk": 1,
+    "fields": {
+      "title": "CAD/CAE",
+      "color": "#17a2b8"
+    }
+  },
+  {
+    "model": "classroom.skill",
+    "pk": 2,
+    "fields": {
+      "title": "Mathlab",
+      "color": "#28a745"
+    }
   }
-
 ]

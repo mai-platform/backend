@@ -11,5 +11,5 @@ def home(request):
         if request.user.is_company:
             return redirect('companies:quiz_change_list')
         else:
-            return redirect('students:quiz_list')
+            return redirect('students:student_profile')
     return render(request, 'classroom/index.html')
