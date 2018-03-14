@@ -26,11 +26,19 @@ class StudentSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('students:quiz_list')
+        return redirect('students:student_profile')
 
 
 @method_decorator([login_required, student_required], name='dispatch')
-class StudentInterestsView(UpdateView):
+class StudentProfileView(ListView):
+    model = Student
+    # ordering = ('',)
+    context_object_name = 'student_profile'
+    template_name = 'classroom/student.html'
+
+
+@method_decorator([login_required, student_required], name='dispatch')
+class StudentProfileEdit(UpdateView):
     """
     тут менять курс у студента
     TODO: добавить вещи
@@ -38,7 +46,7 @@ class StudentInterestsView(UpdateView):
     model = Student
     form_class = StudentCourseForm
     template_name = 'classroom/students/interests_form.html'
-    success_url = reverse_lazy('students:quiz_list')
+    success_url = reverse_lazy('students:student_profile')
 
     def get_object(self):
         return self.request.user.student
@@ -48,12 +56,12 @@ class StudentInterestsView(UpdateView):
         return super().form_valid(form)
 
 
-@method_decorator([login_required, student_required], name='dispatch')
-class VacancyListView(ListView):
-    model = Vacancy
-    ordering = ('title', )
-    context_object_name = 'vacancies'
-    template_name = 'classroom/students/quiz_list.html'
+# @method_decorator([login_required, student_required], name='dispatch')
+# class VacancyListView(ListView):
+#     model = Vacancy
+#     ordering = ('title',)
+#     context_object_name = 'vacancies'
+#     template_name = 'classroom/vacancy.html'
 
     # def get_queryset(self):
     #     student = self.request.user.student

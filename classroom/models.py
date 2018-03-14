@@ -60,24 +60,12 @@ class Speciality(models.Model):
 ####### Vacancy related models ########
 #######################################
 
-class Subject(models.Model):
-    name = models.CharField(max_length=30)
-    color = models.CharField(max_length=7, default='#007bff')
-
-    def __str__(self):
-        return self.name
-
-    def get_html_badge(self):
-        name = escape(self.name)
-        color = escape(self.color)
-        html = '<span class="badge badge-primary" style="background-color: %s">%s</span>' % (color, name)
-        return mark_safe(html)
-
 
 class Quiz(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes')
     name = models.CharField(max_length=255)
-    subject = models.ForeignKey(Subject, on_delete=models.CASCADE, related_name='quizzes')
+
+    #
 
     def __str__(self):
         return self.name
@@ -114,6 +102,20 @@ class Vacancy(models.Model):
 ####### Student related models ########
 #######################################
 
+class Skill(models.Model):
+    title = models.CharField(max_length=30)
+    color = models.CharField(max_length=7, default='#007bff')
+
+    def __str__(self):
+        return self.title
+
+    def get_html_badge(self):
+        name = escape(self.title)
+        color = escape(self.color)
+        html = '<span class="badge badge-primary" style="background-color: %s">%s</span>' % (color, name)
+        return mark_safe(html)
+
+
 GENDER_CHOICES = (
     ('male', "Мужской"),
     ('female', "Женский"),
@@ -130,6 +132,7 @@ class Student(models.Model):
     gender = models.CharField(choices=GENDER_CHOICES, default='male', verbose_name='Пол', max_length=8)
     dob = models.DateField(null=True)
     phone = models.CharField(max_length=12, null=True)
+    skills = models.ForeignKey(Skill, on_delete=models.CASCADE, related_name='student_skills', null=True)
 
     # def get_unanswered_questions(self, quiz):
     #     answered_questions = self.quiz_answers \

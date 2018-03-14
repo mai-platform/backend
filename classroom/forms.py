@@ -51,13 +51,18 @@ class StudentCourseForm(forms.ModelForm):
     department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True)
     speciality = forms.ModelChoiceField(queryset=Speciality.objects.all(), required=True)
     description = forms.TextInput()
+    # gender = forms.ModelChoiceField(queryset=)
+    dob = forms.DateField(required=True)
+    phone = forms.CharField(required=True)
+    skills = forms.CheckboxSelectMultiple()
 
     class Meta:
         model = Student
-        fields = ('course', 'faculty', 'department', 'speciality', 'description')
-        # widgets = {
-        #     'course': forms.ModelChoiceField(queryset=Course.objects.all(), initial=None)
-        # }
+        fields = ('course', 'faculty', 'department', 'speciality', 'description',
+                  'dob', 'phone', 'skills')
+        widgets = {
+            'skills': forms.CheckboxSelectMultiple
+        }
 
     # @transaction.atomic
     # def save(self):

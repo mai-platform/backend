@@ -1,16 +1,18 @@
 from django.urls import include, path
 
-from .views import classroom, students, companies
+from .views import platform, students, companies, vacancies
 
 urlpatterns = [
-    path('', classroom.home, name='home'),
+    path('', platform.home, name='home'),
+
+    path('vacancy/', include(([
+path('', vacancies.VacanciesListView.as_view(), name='vacancies_list'),
+    ], 'classroom'), namespace='vacancy')),
 
     path('students/', include(([
-        # path('', students.VacancyListView.as_view(), name='quiz_list'),
-        path('', students.StudentProfileView.as_view(), name='student_profile'),
-        path('interests/', students.StudentInterestsView.as_view(), name='student_interests'),
-        path('taken/', students.TakenQuizListView.as_view(), name='taken_quiz_list'),
-        # path('quiz/<int:pk>/', students.take_quiz, name='take_quiz'),
+
+        path('me', students.StudentProfileView.as_view(), name='student_profile'),
+        path('edit/', students.StudentProfileEdit.as_view(), name='student_interests'),
     ], 'classroom'), namespace='students')),
 
     path('companies/', include(([
@@ -19,8 +21,5 @@ urlpatterns = [
         path('quiz/<int:pk>/', companies.VacancyUpdateView.as_view(), name='quiz_change'),
         path('quiz/<int:pk>/delete/', companies.VacancyDeleteView.as_view(), name='quiz_delete'),
         path('quiz/<int:pk>/results/', companies.QuizResultsView.as_view(), name='quiz_results'),
-        # path('quiz/<int:pk>/question/add/', companies.vacancy_add, name='vacancy_add'),
-        # path('quiz/<int:quiz_pk>/question/<int:question_pk>/', companies.question_change, name='question_change'),
-        # path('quiz/<int:quiz_pk>/question/<int:question_pk>/delete/', companies.QuestionDeleteView.as_view(), name='question_delete'),
     ], 'classroom'), namespace='companies')),
 ]
