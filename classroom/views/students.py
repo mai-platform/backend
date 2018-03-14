@@ -55,18 +55,18 @@ class VacancyListView(ListView):
     context_object_name = 'vacancies'
     template_name = 'classroom/students/quiz_list.html'
 
-    def get_queryset(self):
-        student = self.request.user.student
-        student_course = student.course
-        student_faculty = student.faculty
-        student_department = student.department
-        student_speciality = student.speciality
-        responded_vacancies = student.responded_vacancies.values_list('pk', flat=True)
-        queryset = Vacancy.objects.filter(cource=student_course) \
-            .exclude(pk__in=responded_vacancies)
-            # .annotate(questions_count=Count('questions')) \
-            # .filter(questions_count__gt=0)
-        return queryset
+    # def get_queryset(self):
+    #     student = self.request.user.student
+    #     student_course = student.course
+    #     student_faculty = student.faculty
+    #     student_department = student.department
+    #     student_speciality = student.speciality
+    #     responded_vacancies = student.responded_vacancies.values_list('pk', flat=True)
+    #     queryset = Vacancy.objects.filter(cource=student_course) \
+    #         .exclude(pk__in=responded_vacancies)
+    #         # .annotate(questions_count=Count('questions')) \
+    #         # .filter(questions_count__gt=0)
+    #     return queryset
 
 
 @method_decorator([login_required, student_required], name='dispatch')

@@ -17,10 +17,10 @@ class Course(models.Model):
     Минимальный курс, с которого студента возьмут на практику.
     В шаблоне обрабатывать в виде 'course.min и выше'.
     """
-    min = models.IntegerField(default=2)
+    min = models.IntegerField()
 
     def __str__(self):
-        return self.min
+        return str(self.min)
 
 
 class Faculty(models.Model):
@@ -28,7 +28,7 @@ class Faculty(models.Model):
     """
     Факультет студента. Значения по умолчанию задать через миграции.
     """
-    number = models.IntegerField()
+    number = models.CharField(max_length=2)
     title = models.CharField(max_length=40)
 
     def __str__(self):
@@ -39,7 +39,7 @@ class Department(models.Model):
     """
     Кафедра студента. Значения по умолчанию задать через миграции.
     """
-    number = models.IntegerField()
+    number = models.CharField(max_length=3)
     title = models.CharField(max_length=40)
 
     def __str__(self):
@@ -102,7 +102,7 @@ class Answer(models.Model):
 
 class Vacancy(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='vacancies')
-    title = models.CharField('Title', max_length=40)
+    title = models.CharField('vacancy_title', max_length=40)
     course = models.ForeignKey(Course, related_name='vacancy_course', on_delete=models.CASCADE)
     faculty = models.ForeignKey(Faculty, related_name='vacancy_faculty', on_delete=models.CASCADE)
     department = models.ForeignKey(Department, related_name='vacancy_department', on_delete=models.CASCADE)

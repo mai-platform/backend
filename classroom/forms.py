@@ -30,6 +30,7 @@ class StudentSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
+        fields = ("username", "email", "password1", "password2", "course", "faculty", "department", "speciality")
 
     @transaction.atomic
     def save(self):
@@ -54,9 +55,20 @@ class StudentCourseForm(forms.ModelForm):
 
 
 class VacancyForm(forms.ModelForm):
-    class Meta:
-        model = Vacancy
-        fields = ('title', )
+    # course = forms.ModelChoiceField(queryset=Course.objects.all(), required=True)
+    # faculty = forms.ModelChoiceField(queryset=Faculty.objects.all(), required=True)
+    # department = forms.ModelChoiceField(queryset=Department.objects.all(), required=True)
+    # speciality = forms.ModelChoiceField(queryset=Speciality.objects.all(), required=True)
+    # class Meta:
+    #     model = Vacancy
+    #     fields = ('title', 'descriprion', 'course', 'faculty', 'department')
+    #     widgets = {
+    #         'descriprion': forms.TextInput,
+    #         'course': forms.ChoiceField,
+    #         'faculty': forms.ChoiceField,
+    #         'department': forms.ChoiceField,
+    #     }
+    pass
 
 
 # class BaseAnswerInlineFormSet(forms.BaseInlineFormSet):

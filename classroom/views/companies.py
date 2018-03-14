@@ -50,7 +50,7 @@ class VacancyListView(ListView):
 @method_decorator([login_required, company_required], name='dispatch')
 class VacancyCreateView(CreateView):
     model = Vacancy
-    fields = ('title', 'description', 'course', 'faculty', 'depratment')
+    fields = ('vacancy_title', 'vacancy_title', 'vacancy_course', 'vacancy_faculty', 'vacancy_depratment')
     template_name = 'classroom/companies/quiz_add_form.html'
 
     def form_valid(self, form):
@@ -64,7 +64,7 @@ class VacancyCreateView(CreateView):
 @method_decorator([login_required, company_required], name='dispatch')
 class VacancyUpdateView(UpdateView):
     model = Vacancy
-    fields = ('title', 'description', 'course', 'faculty', 'depratment')
+    fields = ('vacancy_title', 'vacancy_course', 'vacancy_faculty', 'vacancy_depratment')
     context_object_name = 'Vacancy'
     template_name = 'classroom/companies/quiz_change_form.html'
 
