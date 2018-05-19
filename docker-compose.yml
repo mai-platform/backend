@@ -8,7 +8,7 @@
         - POSTGRES_DB=$DATABASE_NAME
       ports:
         -  "5432:5432"
-    vbot:
+    backend:
       environment:
         - DATABASE_HOST=$DATABASE_HOST
         - DATABASE_PORT=$DATABASE_PORT
