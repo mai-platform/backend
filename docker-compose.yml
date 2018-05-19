@@ -17,6 +17,6 @@
         - DATABASE_NAME=$DATABASE_NAME
         - DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
       build: .
-      command: python3 vbot.py
+      command: runserver $LOCAL_IP:$LOCAL_PORT
       depends_on:
         - db

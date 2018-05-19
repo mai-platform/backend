@@ -17,4 +17,4 @@ ENV DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
 COPY . ./
 
 ENTRYPOINT ["python", "manage.py"]
-CMD ["runserver", "0.0.0.0:8080"]
+#CMD ["runserver", "0.0.0.0:8080"]
