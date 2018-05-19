@@ -9,6 +9,13 @@
       ports:
         -  "5432:5432"
     vbot:
+    environment:
+        - DATABASE_HOST=$DATABASE_HOST
+        - DATABASE_PORT=$DATABASE_PORT
+        - DATABASE_USER=$DATABASE_USER
+        - DATABASE_PASSWORD=$DATABASE_PASSWORD
+        - DATABASE_NAME=$DATABASE_NAME
+        - DJANGO_SECRET_KEY=$DJANGO_SECRET_KEY
       build: .
       command: python3 vbot.py
       depends_on:
