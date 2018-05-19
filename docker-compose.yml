@@ -9,7 +9,7 @@
       ports:
         -  "5432:5432"
     vbot:
-    environment:
+      environment:
         - DATABASE_HOST=$DATABASE_HOST
         - DATABASE_PORT=$DATABASE_PORT
         - DATABASE_USER=$DATABASE_USER
